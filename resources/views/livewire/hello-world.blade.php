@@ -18,4 +18,19 @@
     </select>
 
     {{ implode(', ', $greetings) }} {{ $name }} @if ($loud) ! @endif
+
+    {{-- variable $event, sama seperti parameter (event) => di js yang biasa kamu lakukan. --}}
+    {{-- <button wire:click="resetName($event.target.innerText)">Reset Name</button> --}}
+
+    {{-- prevent bekerja seperti event.preventDefault(), yaitu mencegah berjalannya sifat asli dari event yang saat ini sedang berjalan, misal tag a tidak akan mengikuti hrefnya, form tidak akan reload  --}}
+    <form action="#" wire:submit.prevent="resetName('Dewi')">
+        <button>Reset Name</button>
+    </form>
+
+    {{-- atau --}}
+
+    {{-- variable $set akan mengatur nilai variable name menjadi Dewi --}}
+    <form action="#" wire:submit.prevent="$set('name', 'Dewi')">
+        <button>Reset Name</button>
+    </form>
 </div>
