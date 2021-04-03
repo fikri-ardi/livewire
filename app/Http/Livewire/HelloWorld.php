@@ -10,6 +10,16 @@ class HelloWorld extends Component
     public $loud = false;
     public $greetings = ['Hello'];
 
+    // method mount sama sperti __construct, method ini akan dijalankan ketika laravel component dibuat
+    public function mount($name){
+        $this->name = $name;
+    }
+
+    // method hydrate akan dijalankan setiap kali terjadi action yang berkaitan dengan data binding, method hydrate dijalankan lalu action baru dijalankan
+    public function hydrate(){
+        $this->name = 'hydrated';
+    }
+    
     public function resetName($name = 'Fikri'){
         $this->name = $name;
     }

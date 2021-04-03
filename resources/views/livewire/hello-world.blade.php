@@ -23,9 +23,9 @@
     {{-- <button wire:click="resetName($event.target.innerText)">Reset Name</button> --}}
 
     {{-- prevent bekerja seperti event.preventDefault(), yaitu mencegah berjalannya sifat asli dari event yang saat ini sedang berjalan, misal tag a tidak akan mengikuti hrefnya, form tidak akan reload  --}}
-    <form action="#" wire:submit.prevent="resetName('Dewi')">
+    {{-- <form action="#" wire:submit.prevent="resetName('Dewi')">
         <button>Reset Name</button>
-    </form>
+    </form> --}}
 
     {{-- atau --}}
 

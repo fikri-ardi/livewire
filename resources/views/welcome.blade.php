@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    @livewire('hello-world')
+    {{-- ['name'=>'Fikri'], data ini akan dikirim ke method mount di controller hello-word component --}}
+    @livewire('hello-world', ['name'=>'Fikri'])
     @livewireScripts
 </body>
 
