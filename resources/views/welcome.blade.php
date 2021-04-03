@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    Hello World
+    @livewire('hello-world')
     @livewireStyles
 </body>
 
