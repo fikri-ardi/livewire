@@ -11,7 +11,7 @@
 
 <body>
     @livewire('hello-world')
-    @livewireStyles
+    @livewireScripts
 </body>
 
 </html>
