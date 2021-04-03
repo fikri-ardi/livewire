@@ -7,23 +7,20 @@ use Livewire\Component;
 class HelloWorld extends Component
 {
     public $name = 'Rian'; //properti public ini akan otomatis dipassing ke view nya
-    public $loud = false;
-    public $greetings = ['Hello'];
-
-    // method mount sama sperti __construct, method ini akan dijalankan ketika laravel component dibuat
-    public function mount($name){
-        $this->name = $name;
-    }
-
-    // method hydrate akan dijalankan setiap kali terjadi action yang berkaitan dengan data binding, method hydrate dijalankan lalu action baru dijalankan
-    public function hydrate(){
-        $this->name = 'hydrated';
+    public $age = 17;
+    public $updatedAge = false;
+    public $updated = false;
+    
+    // method updated akan dijalankan setiap kali properti public di atas berubah
+    public function updated(){
+        $this->updated = true;
     }
     
-    public function resetName($name = 'Fikri'){
-        $this->name = $name;
+    // method updatedAge akan dijalankan setiap kali properti public $age di atas berubah
+    public function updatedAge(){
+        $this->updatedAge = true;
     }
-    
+
     public function render()
     {
         return view('livewire.hello-world');
