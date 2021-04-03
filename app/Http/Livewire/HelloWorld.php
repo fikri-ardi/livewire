@@ -8,6 +8,8 @@ class HelloWorld extends Component
 {
     public function render()
     {
-        return view('livewire.hello-world');
+        return view('livewire.hello-world',[
+            'name' => 'Fikri'
+        ]);
     }
 }
