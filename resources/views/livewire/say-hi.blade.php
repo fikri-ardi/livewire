@@ -1,4 +1,3 @@
-<div>
-    <input wire:model="name" type="text">
-    {{ $name }}
-</div>
+<span>
+    Hi {{ $contact->name }} {{ now() }}
+</span>
