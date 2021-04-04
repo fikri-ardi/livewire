@@ -9,13 +9,14 @@ class HelloWorld extends Component
 {
     public $contacts;
 
-    public function mount(){
+    public function mount()
+    {
         $this->contacts = Contact::all();
     }
     
-    public function removeContact(Contact $contact){
-        Contact::where('id', $contact->id)->first()->delete();
-        $this->contacts = Contact::all();
+    public function refreshChildren()
+    {
+        $this->emit('refreshChildren');
     }
     
     public function render()

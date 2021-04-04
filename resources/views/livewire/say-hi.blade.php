@@ -1,3 +1,4 @@
-<span>
+<div>
     Hi {{ $contact->name }} {{ now() }}
-</span>
+    <button wire:click="$refresh">refresh</button>
+</div>
