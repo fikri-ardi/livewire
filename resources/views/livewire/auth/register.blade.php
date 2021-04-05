@@ -1,19 +1,21 @@
 <form wire:submit.prevent="register">
     <div>
         <label for="email">E-mail</label>
-        <input wire:model="email" type="email" id="email" name="email">
+        <input wire:keyup="validate_email" wire:model="email" type="email" id="email" name="email">
         @error('email') <span>{{ $message }}</span> @enderror
     </div>
 
     <div>
         <label for="password">Password</label>
-        <input wire:model="password" type="password" id="password" name="password">
+        <input wire:keyup="validate_password" wire:model="password" type="text" id="password" name="password">
         @error('password') <span>{{ $message }}</span> @enderror
     </div>
 
     <div>
         <label for="passwordConfirmation">Password Confirmation</label>
-        <input wire:model="passwordConfirmation" type="password" id="passwordConfirmation" name="passwordConfirmation">
+        <input wire:keyup="validate_password_confirm" wire:model="passwordConfirmation" type="text" id="passwordConfirmation"
+            name="passwordConfirmation">
+        @error('passwordConfirmation') <span>{{ $message }}</span> @enderror
     </div>
 
     <div>
