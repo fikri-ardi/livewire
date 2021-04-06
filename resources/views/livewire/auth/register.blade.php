@@ -1,5 +1,5 @@
-<div class="container">
-    <form wire:submit.prevent="register">
+<div class="fixed h-full">
+    <form wire:submit.prevent="register" class="fixed top-1/2 left-1/2">
         <p>Create an account</p>
 
         <div class="form-group email">

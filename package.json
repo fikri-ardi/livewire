@@ -15,7 +15,10 @@
         "laravel-mix": "^6.0.16",
         "lodash": "^4.17.19",
         "postcss": "^8.2.9",
-        "tailwindcss": "^2.0.4"
+        "tailwindcss": "^2.0.4",
+        "webpack-cli": "^4.6.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "alpinejs": "^2.8.2"
+    }
 }
