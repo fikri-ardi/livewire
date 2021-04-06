@@ -95,11 +95,27 @@ input{
     position: absolute;
     top: 50%;
     right: 0;
-    transform: translate(105%, -50%);
     background: #000000B0;
     padding: 10px 20px;
     border-radius: 5px;
+    transform: translate(100%, -50%);
+    transition: .5s ease-out;
     transition: 0.2s ease-out;
     text-align: left;
     font-size: .8rem;
+    animation: slide .5s ease-out 1 forwards;
+}
+
+@keyframes slide {
+    form{
+        transform: translate(100%, -50%);
+    }
+    to{
+        transform: translate(calc(100% + 10px), -50%);
+    }
+}
+
+.validation-errors .success{
+    color: rgb(78, 240, 151);
+    margin: 0;
 }
