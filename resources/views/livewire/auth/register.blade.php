@@ -3,21 +3,29 @@
         <p>Create an account</p>
 
         <div class="form-group email">
-            <input wire:keyup="validate_email" wire:model="email" type="email" id="email" name="email" placeholder="email">
+            <span class="iconly-brokenMessage"><span class="path1"></span><span class="path2"></span></span>
+            <input wire:keyup="validate_email" wire:model="email" type="email" id="email" name="email" placeholder="E-mail">
             @error('email') <div class="validation-errors">{{ $message }}</div> @enderror
         </div>
 
         <div class="form-group">
-            <input wire:keyup="validate_password" wire:model="password" type="text" id="password" name="password" placeholder="password">
+            <span class="iconly-brokenPassword"></span>
+            <input wire:keyup="validate_password" wire:model="password" type="password" id="password" name="password" placeholder="Password">
             @error('password') <div class="validation-errors">{{ $message }}</div> @enderror
         </div>
 
         <div class="form-group">
-            <input wire:keyup="validate_password_confirm" wire:model="passwordConfirmation" type="text" id="passwordConfirmation"
-                name="passwordConfirmation" placeholder="password confirmation">
+            <span class="iconly-brokenScan"></span>
+            <input wire:keyup="validate_password_confirm" wire:model="passwordConfirmation" type="password" id="passwordConfirmation"
+                name="passwordConfirmation" placeholder="Password confirmation">
             @error('passwordConfirmation') <div class="validation-errors">{{ $message }}</div> @enderror
         </div>
 
-        <button class="register-btn" type="submit">REGISTER</button>
+        <div class="register">
+            <button class="register-btn" type="submit">
+                <span class="iconly-brokenArrow---Right-Square"></span>
+                REGISTER
+            </button>
+        </div>
     </form>
 </div>

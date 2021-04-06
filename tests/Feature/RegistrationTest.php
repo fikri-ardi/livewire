@@ -107,7 +107,7 @@ class RegistrationTest extends TestCase
             ->set('password', 'siji')
             ->set('passwordConfirmation', 'loro')
             ->call('register')
-            ->assertHasErrors(['password' => 'same'])
+            ->assertHasErrors(['passwordConfirmation' => 'same'])
             ;
     }
 }
