@@ -34,14 +34,14 @@ class RegistrationTest extends TestCase
     }
 
     /** @test */
-    function email_is_required()
+    function email_and_password_is_required()
     {
         Livewire::test('auth.register')
             ->set('email', '')
-            ->set('password', 'fikriardi')
+            ->set('password', '')
             ->set('passwordConfirmation', 'fikriardi')
             ->call('register')
-            ->assertHasErrors(['email' => 'required'])
+            ->assertHasErrors(['email'=>'required', 'password'=>'required'])
             ;
     }
 
@@ -72,18 +72,6 @@ class RegistrationTest extends TestCase
             ->set('passwordConfirmation', 'fikriardi')
             ->call('register')
             ->assertHasErrors(['email' => 'unique'])
-            ;
-    }
-
-    /** @test */
-    function password_is_required()
-    {
-        Livewire::test('auth.register')
-            ->set('email', 'fikriardi@gmai.com')
-            ->set('password', '')
-            ->set('passwordConfirmation', 'fikriardi')
-            ->call('register')
-            ->assertHasErrors(['password' => 'required'])
             ;
     }
 
