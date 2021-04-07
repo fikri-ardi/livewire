@@ -1,0 +1,2 @@
+<input {{ $attributes->merge(['class'=>'bg-transparent focus:outline-none']) }} wire:keyup="validates" wire:model="{{ $model }}"
+    type="{{ $type ?? 'text' }}" name="{{ $model }}" required autocomplete="off">

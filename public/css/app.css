@@ -18,6 +18,14 @@ Use a better box model (opinionated).
 }
 
 /**
+remove any outline when in focus.
+*/
+
+:focus{
+  outline: none;
+}
+
+/**
 Use a more readable tab size (opinionated).
 */
 
@@ -31170,6 +31178,30 @@ video {
   }
 }
 
+@-webkit-keyframes pop {
+  0% {
+    margin-top: -15px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pop {
+  0% {
+    margin-top: -15px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
 .animate-none {
   -webkit-animation: none;
           animation: none;
@@ -31193,6 +31225,11 @@ video {
 .animate-bounce {
   -webkit-animation: bounce 1s infinite;
           animation: bounce 1s infinite;
+}
+
+.animate-pop {
+  -webkit-animation: pop 0.3s ease-out 1;
+          animation: pop 0.3s ease-out 1;
 }
 
 .mix-blend-normal {
@@ -62397,6 +62434,11 @@ video {
             animation: bounce 1s infinite;
   }
 
+  .sm\:animate-pop {
+    -webkit-animation: pop 0.3s ease-out 1;
+            animation: pop 0.3s ease-out 1;
+  }
+
   .sm\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -93506,6 +93548,11 @@ video {
   .md\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .md\:animate-pop {
+    -webkit-animation: pop 0.3s ease-out 1;
+            animation: pop 0.3s ease-out 1;
   }
 
   .md\:mix-blend-normal {
@@ -124619,6 +124666,11 @@ video {
             animation: bounce 1s infinite;
   }
 
+  .lg\:animate-pop {
+    -webkit-animation: pop 0.3s ease-out 1;
+            animation: pop 0.3s ease-out 1;
+  }
+
   .lg\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -155730,6 +155782,11 @@ video {
             animation: bounce 1s infinite;
   }
 
+  .xl\:animate-pop {
+    -webkit-animation: pop 0.3s ease-out 1;
+            animation: pop 0.3s ease-out 1;
+  }
+
   .xl\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -186839,6 +186896,11 @@ video {
   .\32xl\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .\32xl\:animate-pop {
+    -webkit-animation: pop 0.3s ease-out 1;
+            animation: pop 0.3s ease-out 1;
   }
 
   .\32xl\:mix-blend-normal {
