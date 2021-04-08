@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\Request;
 
@@ -19,13 +20,18 @@ class Login extends Component
     public function login(Request $request){
         $validatedData = $this->validate();
 
-        if (auth()->attempt($validatedData)) {
-            $request->session()->regenerate();
+        /** @check whether the email has been registered */
+        $emailIsRegistered = User::where('email', $validatedData['email'])->first();
 
-            return redirect()->intended('/');
+        if ($emailIsRegistered) {
+            if (auth()->attempt($validatedData)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/');
+            }
+            return $this->addError('password', 'The password you entered is incorrect.');
         }
 
-        return $this->addError('email', 'The credentials is does not match our records.');
+        return $this->addError('email', 'Your email has not been registered.');
     }
     
     public function render()
