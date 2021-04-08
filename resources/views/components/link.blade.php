@@ -1,0 +1,1 @@
+<a {{ $attributes->merge(['class'=>'text-sm hover:underline text-purple-400']) }} href="{{ $href }}">{{ $slot }}</a>

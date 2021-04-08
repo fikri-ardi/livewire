@@ -20,7 +20,9 @@
 
         <x-invalid-form-message field="password" model="{{ $password }}" />
 
-        <div class="flex justify-end mr-10 mt-5">
+        <div class="flex justify-between items-center mx-10 mt-5">
+            <x-link href="{{ route('register') }}">I haven't registered yet.</x-link>
+
             <x-button>
                 <span class="text-lg mr-1 iconly-brokenArrow---Right-Square"></span>
                 LOGIN

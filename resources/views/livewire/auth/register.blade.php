@@ -30,7 +30,9 @@
         </x-form-group>
         <x-invalid-form-message field="passwordConfirmation" model="{{ $passwordConfirmation }}" />
 
-        <div class="flex justify-end mr-10 mt-5">
+        <div class="flex justify-between items-center mx-10 mt-5">
+            <x-link href="{{ route('login') }}">I already have an account.</x-link>
+
             <x-button>
                 <span class="text-lg mr-1 iconly-brokenArrow---Right-Square"></span>
                 REGISTER
