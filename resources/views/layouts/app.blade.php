@@ -12,8 +12,11 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="antialiased font-sans">
-    {{ $slot }}
+<body class="antialiased font-sans grid grid-cols-4">
+    {{ $sidebar ?? null }}
+    <main class="col-span-3">
+        {{ $slot }}
+    </main>
 
     @livewireScripts
 </body>
