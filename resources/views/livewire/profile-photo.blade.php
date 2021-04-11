@@ -3,7 +3,7 @@
         x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
         x-on:livewire-upload-progress="progress = $event.detail.progress">
 
-        {{-- Profile Photo Viewer--}}
+        {{-- Profile Photo--}}
         <div class="group relative flex justify-center items-center flex-col">
             {{-- Input Photo --}}
             <div class="group-hover:opacity-100 transition ease-out opacity-0 h-12 w-12 m-auto absolute items-center justify-center">
@@ -17,10 +17,8 @@
             {{-- Photo --}}
             @if ($profilePhoto)
             <img src="{{ $profilePhoto->temporaryUrl() }}" class="rounded-full h-40 w-40 object-cover shadow-md">
-            @elseif($profilePhotoUrl)
-            <img src="{{ $profilePhotoUrl }}" class="rounded-full h-40 w-40 object-cover shadow-md">
             @else
-            <div class="iconly-brokenProfile text-8xl bg-white bg-opacity-40 p-5 rounded-full shadow-md text-gray-800"></div>
+            @livewire('profile-photo-viewer')
             @endif
 
             <!-- Progress Bar -->
