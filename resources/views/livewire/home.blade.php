@@ -8,5 +8,4 @@
         <span class="iconly-brokenLogout text-xl mr-1"></span>
         Logout
     </x-button>
-    @livewire('profile-photo')
 </div>

@@ -2,6 +2,6 @@
     @livewire('sidebar')
 </x-slot>
 
-<div>
-
+<div class="py-4">
+    @livewire('profile-photo')
 </div>
