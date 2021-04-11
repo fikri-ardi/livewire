@@ -1,4 +1,4 @@
-<div class="fixed h-full w-full flex bg-gradient-to-tl from-purple-500 to-pink-500">
+<div class="fixed h-full w-full flex bg-gradient-to-tl from-indigo-500 to-pink-500">
     <form wire:submit.prevent="register" class="m-auto bg-gradient-to-b from-gray-900 to-gray-800 py-20 rounded-md shadow-md text-gray-200 w-96">
         <p class="text-xl mb-5 mx-10">Create an account</p>
 

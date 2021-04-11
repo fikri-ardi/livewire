@@ -9,13 +9,13 @@ class Sidebar extends Component
 {
     public $profilePhotoUrl;
 
-    protected $listeners = ['profilePhotoUpdated'=>'refreshMe'];
-
-    public function refreshMe(){
-        $this->profilePhotoUrl = auth()->user()->profile_photo_url !== null ? Storage::url(auth()->user()->profile_photo_url) : false;
-    }
+    protected $listeners = ['profilePhotoUpdated'=>'updateProfilePhoto'];
 
     public function mount(){
+        $this->updateProfilePhoto();
+    }
+
+    public function updateProfilePhoto(){
         $this->profilePhotoUrl = auth()->user()->profile_photo_url !== null ? Storage::url(auth()->user()->profile_photo_url) : false;
     }
 

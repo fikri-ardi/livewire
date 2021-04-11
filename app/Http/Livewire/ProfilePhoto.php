@@ -27,7 +27,7 @@ class ProfilePhoto extends Component
             'profile_photo_url'=>$profilePhotoName
         ]);
 
-        $this->emit('profilePhotoUpdated');
+        $this->emit('profilePhotoUpdated'); //used for updating profile photo in sidebar
     }
     
     public function render()
