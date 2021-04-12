@@ -15,3 +15,5 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', \App\Http\Livewire\Auth\Register::class)->name('register');
     Route::get('/login', \App\Http\Livewire\Auth\Login::class)->name('login');
 });
+
+Route::get('/download', \App\Http\Livewire\Download::class);
