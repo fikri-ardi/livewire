@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class ProfilePhotoViewer extends Component
 {
     public $profilePhotoUrl;
+    public $user;
     public $size = 'h-40 w-40'; //used for setting image size in view
     
     protected $listeners = ['profilePhotoUpdated'=>'updateProfilePhoto'];
@@ -17,7 +18,7 @@ class ProfilePhotoViewer extends Component
     }
 
     public function updateProfilePhoto(){
-        $this->profilePhotoUrl = auth()->user()->profile_photo_url !== null ? Storage::url(auth()->user()->profile_photo_url) : false;
+        $this->profilePhotoUrl = $this->user->profile_photo_url !== null ? Storage::url($this->user->profile_photo_url) : false;
     }
     
     public function render()

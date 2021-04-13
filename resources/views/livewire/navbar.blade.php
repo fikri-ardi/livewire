@@ -1,5 +1,5 @@
 <div class="fixed top-0 right-0 w-full flex justify-end items-center px-4 shadow-md py-3">
-    @livewire('profile-photo-viewer', ['size'=>'h-8 w-8'])
+    @livewire('profile-photo-viewer', ['size'=>'h-8 w-8', 'user'=>auth()->user()])
 
     {{-- Dropdown --}}
     <div x-data="{open: false}">

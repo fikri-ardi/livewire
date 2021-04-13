@@ -18,7 +18,7 @@
             @if ($profilePhoto)
             <img src="{{ $profilePhoto->temporaryUrl() }}" class="rounded-full h-40 w-40 object-cover shadow-md">
             @else
-            @livewire('profile-photo-viewer')
+            @livewire('profile-photo-viewer', ['user'=>auth()->user()])
             @endif
 
             <!-- Progress Bar -->
