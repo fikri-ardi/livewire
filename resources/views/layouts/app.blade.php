@@ -14,9 +14,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="antialiased font-sans grid grid-cols-4">
+<body class="antialiased font-sans">
     {{ $sidebar ?? null }}
-    <main class="col-span-3">
+    <main>
         {{ $slot }}
     </main>
 

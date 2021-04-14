@@ -1,4 +1,4 @@
-<form wire:submit.prevent="save" class="mb-4">
+<form wire:submit.prevent="save" class="my-4 flex">
     <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
         x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
         x-on:livewire-upload-progress="progress = $event.detail.progress">

@@ -1,4 +1,4 @@
-<aside class="bg-gradient-to-b from-gray-900 to-gray-800 h-screen text-gray-200 shadow-lg py-5 relative z-10">
+<aside class="bg-gradient-to-b w-80 from-gray-900 to-gray-800 h-full text-gray-200 shadow-lg py-5 fixed z-20">
     {{-- Profile Photo --}}
     @livewire('profile-photo')
 

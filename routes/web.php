@@ -7,7 +7,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users', \App\Http\Livewire\Users::class)->name('users');
     Route::get('/wallets', \App\Http\Livewire\Wallet::class)->name('wallets');
     Route::get('/stats', \App\Http\Livewire\Stat::class)->name('stats');
-    Route::get('/activities', \App\Http\Livewire\Activity::class)->name('activities');
+    Route::get('/activities', \App\Http\Livewire\Activities::class)->name('activities');
     Route::get('/profile', \App\Http\Livewire\Profile::class)->name('profile');
 });
 

@@ -8,9 +8,31 @@ use Illuminate\Support\Facades\Storage;
 class Profile extends Component
 {
     public $profilePhotoUrl;
+    public $name;
+    public $email;
 
+    protected function rules(){
+        return [
+            'name'=>'required|string',
+            'email'=>['required','email', 'unique:users,email,'.auth()->id()], //except the user logged in email
+        ];
+    }
+
+    public function updated($propertyName){
+        $this->validateOnly($propertyName);
+    }
+    
+    public function save(){
+        auth()->user()->update([
+            'name'=>ucwords($this->name),
+            'email'=>$this->email
+        ]);
+    }
+    
     public function mount(){
         $this->updateProfilePhoto();
+        $this->name = auth()->user()->name;
+        $this->email = auth()->user()->email;
     }
 
     public function updateProfilePhoto(){
