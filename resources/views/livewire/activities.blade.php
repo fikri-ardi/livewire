@@ -12,6 +12,12 @@
             <h1 class="text-4xl text-gray-800">Activities</h1>
         </div>
 
+        {{-- Search Box --}}
+        <x-form-group class="w-1/2 my-2 rounded-full text-gray-200">
+            <span class="iconly-brokenSearch mr-3"></span>
+            <x-input type="search" field="search" model="search" placeholder="Search an activity ..." />
+        </x-form-group>
+
         {{-- Table --}}
         <table class="my-5 table-auto rounded-md overflow-hidden" cellpadding="10">
             <thead class="bg-gray-800 text-gray-200">
@@ -29,6 +35,7 @@
                     <td>{{ $activity->name }}</td>
                     <td>{{ $activity->user->name }}</td>
                     <td class="flex items-center">
+                        @can(['update','delete'], $activity)
                         <x-button wire:click="setMethodTo('update({{ $activity->id }})')" @click="{display = true, name = '{{ $activity->name }}'}"
                             class="mx-1 h-10 w-10 flex items-center justify-center">
                             <span class="iconly-brokenEdit-Square text-lg"></span>
@@ -37,6 +44,12 @@
                             class="mx-1 border border-red-500 h-10 text-red-500 w-10 rounded-full hover:bg-red-500 hover:text-red-100 focus:bg-red-500 focus:text-red-100">
                             <span class="iconly-brokenDelete text-lg"></span>
                         </button>
+                        @else
+                        <div class="flex justify-center w-full">
+                            <span class="iconly-brokenLock"></span>
+                            <span class="text-xs">Not yours.</span>
+                        </div>
+                        @endcan
                     </td>
                 </tr>
                 @empty
@@ -48,6 +61,8 @@
                 @endforelse
             </tbody>
         </table>
+
+        {{ $activities->links() }}
 
         {{-- Add New Activity --}}
         <div x-show="display" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-30 z-30">

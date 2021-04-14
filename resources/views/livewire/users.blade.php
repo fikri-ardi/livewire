@@ -2,7 +2,7 @@
     @livewire('sidebar')
 </x-slot>
 
-<div class="pt-14 px-14">
+<div class="pt-14 pl-96">
     @livewire('navbar')
 
     {{-- Search Box --}}

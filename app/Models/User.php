@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function activities(){
         return $this->hasMany(Activity::class);
     }
+
+    public function isCreator(User $user, Activity $activity){
+        return ($user->id === $activity->user_id) ? true : false;
+    }
 }

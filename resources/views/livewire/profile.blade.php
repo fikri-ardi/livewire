@@ -2,7 +2,7 @@
     @livewire('sidebar')
 </x-slot>
 
-<div class="pt-16 px-16 flex flex-col justify-start">
+<div class="pt-16 pl-96 flex flex-col justify-start">
     @livewire('navbar', ['user' => auth()->user()])
     @livewire('profile-photo')
     <form wire:submit.prevent="save">
