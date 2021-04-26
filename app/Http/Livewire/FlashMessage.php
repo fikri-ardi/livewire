@@ -12,7 +12,7 @@ class FlashMessage extends Component
     public $sessionType;
     public $sessionMsg;
 
-    protected $listeners = ['done'=>'updateSession'];
+    protected $listeners = ['newMsg'=>'updateSession'];
 
     public function updateSession($sessionType, $sessionMsg){
         $this->sessionType = $sessionType;

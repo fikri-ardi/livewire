@@ -2,18 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use Session;
 use Livewire\Component;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use App\Http\Traits\FlashMessage;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Session;
 
 class Activities extends Component
 {
     use AuthorizesRequests;
     use WithPagination;
+    use FlashMessage;
     
     public $name;
     public $method;
@@ -37,17 +39,6 @@ class Activities extends Component
      */
     public function setMethodTo($method){
         $this->method = $method;
-    }
-
-    /**
-     * used for sending flash message.
-     */
-    public function sendMsg($type, $message){
-        session()->flash('type', $type);
-        session()->flash('message', $message);
-        $sessionType = session('type');
-        $sessionMsg = session('message');
-        $this->emit('done', $sessionType, $sessionMsg);
     }
 
     public function save(){

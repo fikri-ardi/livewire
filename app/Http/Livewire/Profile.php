@@ -14,7 +14,7 @@ class Profile extends Component
     protected function rules(){
         return [
             'name'=>'required|string',
-            'email'=>['required','email', 'unique:users,email,'.auth()->id()], //except the user logged in email
+            'email'=>['required','email', 'unique:users,email,'.auth()->id()], //except the current user email
         ];
     }
 

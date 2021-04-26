@@ -11,6 +11,7 @@
             <x-input type="email" model="email" placeholder="E-mail" />
 
             <x-valid-form-icon field="email" model="{{ $email }}" />
+            <span wire:loading class="iconly-brokenScan absolute right-0 mr-2 text-lg animate-pulse"></span>
         </x-form-group>
         <x-invalid-form-message field="email" model="{{ $email }}" />
 
@@ -19,6 +20,7 @@
             <span class="iconly-brokenPassword text-xl mr-2"><span class="path1"></span><span class="path2"></span></span>
             <x-input type="password" model="password" placeholder="Password" />
             <x-valid-form-icon field="password" model="{{ $password }}" />
+            <span wire:loading class="iconly-brokenScan absolute right-0 mr-2 text-lg animate-pulse"></span>
         </x-form-group>
         <x-invalid-form-message field="password" model="{{ $password }}" />
 
@@ -27,6 +29,7 @@
             <span class="iconly-brokenScan text-xl mr-2"><span class="path1"></span><span class="path2"></span></span>
             <x-input type="password" model="passwordConfirmation" placeholder="Password Confirmation" />
             <x-valid-form-icon field="passwordConfirmation" model="{{ $passwordConfirmation }}" />
+            <span wire:loading class="iconly-brokenScan absolute right-0 mr-2 text-lg animate-pulse"></span>
         </x-form-group>
         <x-invalid-form-message field="passwordConfirmation" model="{{ $passwordConfirmation }}" />
 

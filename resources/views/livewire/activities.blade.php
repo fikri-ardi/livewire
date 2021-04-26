@@ -61,6 +61,9 @@
                 @endforelse
             </tbody>
         </table>
+        <span wire:loading.delay class="p-4 rounded-md shadow-xl flex items-center transition ease-out animate-pop w-min">
+            Loading...
+        </span>
 
         {{ $activities->links() }}
 
