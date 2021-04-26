@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Session;
 
 class Activities extends Component
 {
@@ -38,10 +39,22 @@ class Activities extends Component
         $this->method = $method;
     }
 
+    /**
+     * used for sending flash message.
+     */
+    public function sendMsg($type, $message){
+        session()->flash('type', $type);
+        session()->flash('message', $message);
+        $sessionType = session('type');
+        $sessionMsg = session('message');
+        $this->emit('done', $sessionType, $sessionMsg);
+    }
+
     public function save(){
         auth()->user()->activities()->create([
             'name'=>$this->name
         ]);
+        $this->sendMsg('success', 'The activity has been successfully added.');
     }
 
     public function update($id){
@@ -49,35 +62,20 @@ class Activities extends Component
         $activity->update([
             'name'=>$this->name
         ]);
+        $this->sendMsg('success', 'The activity has been successfully updated.');
     }
 
     public function delete(Request $request, Activity $activity){
-        /** 
-         * The first way to authorize with Gate
-         *  if (! Gate::allows('delete-activity', $activity)) {
-        *       abort(403); // unauthorized actions
-         *  } 
+        /**
+         * Authorize user with ActivityPolicy
         */
+        if (auth()->user()->cannot('delete', $activity)) {
+            return $this->sendMsg('error', "Cannot modify other's activity.");
+        }
 
-        /** 
-         * The second way, this method will throw an axception / abort(403) when auth()->id() is different than $activity->user_id.
-         * The Gate are defined in AuthServiceProvider in boot method
-         * Gate::authorize('delete-activity', $activity);
-         */
-
-         /**
-          * Authorize user with ActivityPolicy
-          * if (auth()->user()->cannot('delete', $activity)) {
-          *     abort(403);
-          * }
-          */
-
-         /**
-          * Authorize user with ActivityPolicy
-          */
-          $this->authorize('delete', $activity);
-          
         Activity::destroy($activity->id);
+
+        $this->sendMsg('success', 'The activity has been successfully deleted.');
     }
     
     public function render()

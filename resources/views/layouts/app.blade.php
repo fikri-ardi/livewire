@@ -19,6 +19,7 @@
     <main>
         {{ $slot }}
     </main>
+    @livewire('flash-message')
 
     @livewireScripts
 </body>

@@ -17,7 +17,7 @@ module.exports = {
       },
       animation: {
          pop: 'pop 0.3s ease-out 1',
-      }
+      },
     },
   },
   variants: {

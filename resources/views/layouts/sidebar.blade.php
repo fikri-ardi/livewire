@@ -1,6 +1,8 @@
 <aside class="bg-gradient-to-b w-80 from-gray-900 to-gray-800 h-full text-gray-200 shadow-lg py-5 fixed z-20">
     {{-- Profile Photo --}}
-    @livewire('profile-photo')
+    <div class="flex justify-center items-center">
+        @livewire('profile-photo')
+    </div>
 
     {{-- Menu --}}
     <ul>

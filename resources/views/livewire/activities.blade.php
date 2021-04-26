@@ -2,7 +2,7 @@
     @livewire('sidebar')
 </x-slot>
 
-<div class="pt-20 pl-96">
+<div class="pt-20 pl-96 pr-20">
     <div x-data="{ display: false, name:'' }"> {{-- Alpinejs data --}}
         @livewire('navbar', ['user' => auth()->user()])
 
