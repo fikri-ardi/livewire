@@ -6,12 +6,12 @@ module.exports = {
       keyframes: {
           pop: {
            '0%': { 
-             marginTop: '-15px',
+             transform: 'scaleY(0)',
              opacity: '0'
             },
-           '100%': { 
-             marginTop: '0',
-             opacity: '1' 
+            '100%': { 
+              transform: 'scaleY(1)',
+              opacity: '1' 
             },
          }
       },
@@ -21,7 +21,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    backgroundColor: ({ after }) => after(['disabled'])
   },
   plugins: [],
 }

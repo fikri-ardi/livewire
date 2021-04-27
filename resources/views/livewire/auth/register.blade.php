@@ -11,7 +11,6 @@
             <x-input type="email" model="email" placeholder="E-mail" />
 
             <x-valid-form-icon field="email" model="{{ $email }}" />
-            <span wire:loading class="iconly-brokenScan absolute right-0 mr-2 text-lg animate-pulse"></span>
         </x-form-group>
         <x-invalid-form-message field="email" model="{{ $email }}" />
 
@@ -20,7 +19,6 @@
             <span class="iconly-brokenPassword text-xl mr-2"><span class="path1"></span><span class="path2"></span></span>
             <x-input type="password" model="password" placeholder="Password" />
             <x-valid-form-icon field="password" model="{{ $password }}" />
-            <span wire:loading class="iconly-brokenScan absolute right-0 mr-2 text-lg animate-pulse"></span>
         </x-form-group>
         <x-invalid-form-message field="password" model="{{ $password }}" />
 
@@ -29,16 +27,18 @@
             <span class="iconly-brokenScan text-xl mr-2"><span class="path1"></span><span class="path2"></span></span>
             <x-input type="password" model="passwordConfirmation" placeholder="Password Confirmation" />
             <x-valid-form-icon field="passwordConfirmation" model="{{ $passwordConfirmation }}" />
-            <span wire:loading class="iconly-brokenScan absolute right-0 mr-2 text-lg animate-pulse"></span>
         </x-form-group>
         <x-invalid-form-message field="passwordConfirmation" model="{{ $passwordConfirmation }}" />
 
         <div class="flex justify-between items-center mx-10 mt-5">
             <x-link href="{{ route('login') }}">I already have an account.</x-link>
 
-            <x-button>
-                <span class="text-lg mr-1 iconly-brokenArrow---Right-Square"></span>
-                REGISTER
+            <x-button wire:loading.class="opacity-20" wire:target="register">
+                <div wire:loading.remove wire:target="register" class="flex items-center">
+                    <span class="text-lg mr-1 iconly-brokenArrow---Right-Square"></span>
+                    REGISTER
+                </div>
+                <div wire:loading wire:target="register" class="animate-bounce">. . .</div>
             </x-button>
         </div>
     </form>

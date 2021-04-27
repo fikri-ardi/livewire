@@ -23,9 +23,12 @@
         <div class="flex justify-between items-center mx-10 mt-5">
             <x-link href="{{ route('register') }}">I haven't registered yet.</x-link>
 
-            <x-button>
-                <span class="text-lg mr-1 iconly-brokenArrow---Right-Square"></span>
-                LOGIN
+            <x-button wire:loading.class="opacity-20" wire:target="login">
+                <div wire:loading.remove wire:target="login" class="flex items-center">
+                    <span class="text-lg mr-1 iconly-brokenArrow---Right-Square"></span>
+                    LOGIN
+                </div>
+                <div wire:loading wire:target="login" class="animate-bounce">. . .</div>
             </x-button>
         </div>
     </form>
