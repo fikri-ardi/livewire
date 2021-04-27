@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Users extends Component
 {
+    use WithPagination;
+    
     public $search;
     public $profilePhotoUrl;
     
@@ -18,10 +21,14 @@ class Users extends Component
         'search'=>['except'=>'']
     ];
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.users', [
-            'users'=> User::where('email', 'like', "%$this->search%")->get()
+            'users'=> User::where('email', 'like', "%$this->search%")->paginate(10)
         ]);
     }
 }

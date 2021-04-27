@@ -26,5 +26,8 @@
             <span>{{ $user->email }}</span>
         </li>
         @endforeach
+        <div class="w-1/2 my-5">
+            {{ $users->links() }}
+        </div>
     </ol>
 </div>
