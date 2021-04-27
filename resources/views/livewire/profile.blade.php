@@ -19,7 +19,10 @@
         <x-invalid-form-message field="email"></x-invalid-form-message>
 
         <div class="flex justify-end w-1/2 rounded-full text-gray-200 my-2">
-            <x-button>Save</x-button>
+            <x-button wire:loading.class="opacity-50">
+                <span wire:loading.remove>Save</span>
+                <span wire:loading class="animate-bounce">. . .</span>
+            </x-button>
         </div>
 
     </form>

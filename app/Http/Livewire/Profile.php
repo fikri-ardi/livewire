@@ -3,10 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Http\Traits\FlashMessage;
 use Illuminate\Support\Facades\Storage;
 
 class Profile extends Component
 {
+    use FlashMessage;
+    
     public $profilePhotoUrl;
     public $name;
     public $email;
@@ -27,6 +30,7 @@ class Profile extends Component
             'name'=>ucwords($this->name),
             'email'=>$this->email
         ]);
+        $this->sendMsg('success', 'Your profile has been successfully updated');
     }
     
     public function mount(){

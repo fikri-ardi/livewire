@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Http\Traits\FlashMessage;
 use Illuminate\Support\Facades\Storage;
 
 class ProfilePhoto extends Component
 {
     use WithFileUploads;
+    use FlashMessage;
 
     public $profilePhoto;
 
@@ -22,13 +24,16 @@ class ProfilePhoto extends Component
     {
         $this->validate();
 
+        Storage::exists(auth()->user()->profile_photo_url) ? Storage::delete(auth()->user()->profile_photo_url) : true; //delete old profile photo
+
         $profilePhotoName = $this->profilePhoto->store('photos');
 
         auth()->user()->update([
             'profile_photo_url'=>$profilePhotoName
         ]);
 
-        $this->emit('profilePhotoUpdated');
+        $this->emit('profilePhotoUpdated'); //will be heard by profilePhotoViewer livewire component
+        $this->sendMsg('success', 'The profile photo has been successfully updated');
     }
     
     public function render()

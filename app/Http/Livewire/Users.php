@@ -28,7 +28,7 @@ class Users extends Component
     public function render()
     {
         return view('livewire.users', [
-            'users'=> User::where('email', 'like', "%$this->search%")->paginate(10)
+            'users'=> User::where('email', 'like', "%$this->search%")->paginate(5)
         ]);
     }
 }

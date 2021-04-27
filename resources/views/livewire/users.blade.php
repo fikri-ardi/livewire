@@ -19,13 +19,15 @@
 
     {{-- Users List --}}
     <ol>
-        @foreach ($users as $user)
+        @forelse ($users as $user)
         <li class="my-5 flex items-center">
             <span class="bg-gray-800 text-gray-200 flex justify-center items-center h-6 w-6 rounded-full mr-2 text-sm">{{ $loop->iteration }}</span>
             @livewire('profile-photo-viewer', ['size'=>'h-8 w-8', 'user' => $user], key($loop->index))
             <span>{{ $user->email }}</span>
         </li>
-        @endforeach
+        @empty
+        <div class="bg-yellow-200 text-yellow-500 p-3 rounded w-1/2">No user data found.</div>
+        @endforelse
         <div class="w-1/2 my-5">
             {{ $users->links() }}
         </div>

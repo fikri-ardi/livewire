@@ -1,6 +1,6 @@
 <form wire:submit.prevent="save" class="my-4 flex">
-    <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
-        x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
+    <div x-data="{ isUploading: false, progress: 0, showSaveBtn: false }" x-on:livewire-upload-start="isUploading = true"
+        x-on:livewire-upload-finish="isUploading = false, showSaveBtn = true" x-on:livewire-upload-error="isUploading = false"
         x-on:livewire-upload-progress="progress = $event.detail.progress">
 
         {{-- Profile Photo--}}
@@ -27,7 +27,7 @@
             </div>
 
             @if ($profilePhoto)
-            <x-button class="mt-2">Save Photo</x-button>
+            <x-button x-show.transition="showSaveBtn" @click="showSaveBtn = false" class="mt-2">Save Photo</x-button>
             @endif
         </div>
         <x-invalid-form-message field="profilePhoto" model="{{ $profilePhoto }}" class="text-center" />
