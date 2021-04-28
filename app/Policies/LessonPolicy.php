@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Activity;
+use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ActivityPolicy
+class LessonPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class ActivityPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Activity  $activity
+     * @param  \App\Models\Lesson  $lesson
      * @return mixed
      */
-    public function view(User $user, Activity $activity)
+    public function view(User $user, Lesson $lesson)
     {
         //
     }
@@ -48,34 +48,34 @@ class ActivityPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Activity  $activity
+     * @param  \App\Models\Lesson  $lesson
      * @return mixed
      */
-    public function update(User $user, Activity $activity)
+    public function update(User $user, Lesson $lesson)
     {
-        return $user->id === $activity->user_id;
+        return $user->id === $lesson->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Activity  $activity
+     * @param  \App\Models\Lesson  $lesson
      * @return mixed
      */
-    public function delete(User $user, Activity $activity)
+    public function delete(User $user, Lesson $lesson)
     {
-        return $user->id === $activity->user_id;
+        return $user->id === $lesson->user_id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Activity  $activity
+     * @param  \App\Models\Lesson  $lesson
      * @return mixed
      */
-    public function restore(User $user, Activity $activity)
+    public function restore(User $user, Lesson $lesson)
     {
         //
     }
@@ -84,10 +84,10 @@ class ActivityPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Activity  $activity
+     * @param  \App\Models\Lesson  $lesson
      * @return mixed
      */
-    public function forceDelete(User $user, Activity $activity)
+    public function forceDelete(User $user, Lesson $lesson)
     {
         //
     }

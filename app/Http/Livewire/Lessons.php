@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Session;
 use Livewire\Component;
-use App\Models\Activity;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Http\Traits\FlashMessage;
@@ -45,34 +45,34 @@ class Activities extends Component
         auth()->user()->activities()->create([
             'name'=>$this->name
         ]);
-        $this->sendMsg('success', 'The activity has been successfully added.');
+        $this->sendMsg('success', 'The lesson has been successfully added.');
     }
 
     public function update($id){
-        $activity = Activity::where('id', $id)->first();
-        $activity->update([
+        $lesson = Lesson::where('id', $id)->first();
+        $lesson->update([
             'name'=>$this->name
         ]);
-        $this->sendMsg('success', 'The activity has been successfully updated.');
+        $this->sendMsg('success', 'The lesson has been successfully updated.');
     }
 
-    public function delete(Request $request, Activity $activity){
+    public function delete(Request $request, Lesson $lesson){
         /**
-         * Authorize user with ActivityPolicy
+         * Authorize user with lessonPolicy
         */
-        if (auth()->user()->cannot('delete', $activity)) {
-            return $this->sendMsg('error', "Cannot modify other's activity.");
+        if (auth()->user()->cannot('delete', $lesson)) {
+            return $this->sendMsg('error', "Cannot modify other's lesson.");
         }
 
-        Activity::destroy($activity->id);
+        Lesson::destroy($lesson->id);
 
-        $this->sendMsg('success', 'The activity has been successfully deleted.');
+        $this->sendMsg('success', 'The lesson has been successfully deleted.');
     }
     
     public function render()
     {
         return view('livewire.activities', [
-            'activities' => Activity::where('name', 'like', "%$this->search%")->paginate(10)
+            'activities' => Lesson::where('name', 'like', "%$this->search%")->paginate(10)
         ]);
     }
 }
