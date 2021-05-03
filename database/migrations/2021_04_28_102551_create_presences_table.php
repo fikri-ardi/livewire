@@ -17,6 +17,7 @@ class CreatePresencesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('attendance_id')->constrained()->onUpdate('cascade');
+            $table->enum('choice', ['hadir', 'izin', 'sakit']);
             $table->timestamps();
         });
     }

@@ -9,14 +9,3 @@
     border-radius: 40px;
     position: relative;
 }
-.file-input::after{
-    content: "fikri";
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    height: 10px;
-    width: 10px;
-    background-color: red;
-    display: block;
-}

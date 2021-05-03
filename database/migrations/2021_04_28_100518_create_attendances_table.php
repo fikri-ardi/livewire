@@ -17,7 +17,6 @@ class CreateAttendancesTable extends Migration
             $table->id();
             $table->foreignId('lesson_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('subject');
-            $table->enum('choice', ['hadir', 'izin', 'sakit']);
             $table->dateTime('started_at')->default(now());
             $table->dateTime('ended_at');
             $table->timestamps();

@@ -3,14 +3,11 @@
 </x-slot>
 
 <div class="pt-20 pl-96 pr-20">
-    <div x-data="getData()"> {{-- Alpinejs data --}}
-        @livewire('navbar', ['user' => auth()->user()])
+    @livewire('navbar', ['user' => auth()->user()])
 
+    <div x-data="getData()"> {{-- Alpinejs data --}}
         {{-- Header --}}
-        <div class="flex items-center">
-            <span class="iconly-brokenCalendar text-4xl mr-2"></span>
-            <h1 class="text-4xl text-gray-800">Lessons</h1>
-        </div>
+        <x-header icon="iconly-brokenCalendar" subject="Lessons" />
 
         {{-- Search Box --}}
         <x-search placeholder="Search lesson by name ..." />
@@ -65,6 +62,7 @@
             </tbody>
         </table>
 
+        {{-- Pagination --}}
         {{ $lessons->links() }}
 
         {{-- Add New Lesson --}}

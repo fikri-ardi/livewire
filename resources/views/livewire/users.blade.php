@@ -6,10 +6,7 @@
     @livewire('navbar')
 
     {{-- Header --}}
-    <div class="flex items-center my-5">
-        <span class="iconly-brokenUser text-4xl mr-2"></span>
-        <h1 class="text-4xl text-gray-800">Users</h1>
-    </div>
+    <x-header icon="iconly-brokenUser1" subject="Users" />
 
     {{-- Search Box --}}
     <x-search placeholder="Search user by email ..." />
