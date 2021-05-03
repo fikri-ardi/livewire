@@ -14,7 +14,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="antialiased font-sans">
+<body class="antialiased">
     {{ $sidebar ?? null }}
     <main>
         {{ $slot }}

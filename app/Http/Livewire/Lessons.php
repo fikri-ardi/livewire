@@ -8,18 +8,13 @@ use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Http\Traits\FlashMessage;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class Activities extends Component
+class Lessons extends Component
 {
-    use AuthorizesRequests;
-    use WithPagination;
-    use FlashMessage;
+    use AuthorizesRequests,WithPagination,FlashMessage;
     
-    public $name;
-    public $method;
-    public $search;
+    public $name,$startedAt,$endedAt,$method,$search;
 
     public function mount(){
         $this->method = 'save';
@@ -34,24 +29,49 @@ class Activities extends Component
         'page'=>['except'=>1]
     ];
 
-    /**
-     * used for set the method to save or update.
-     */
-    public function setMethodTo($method){
-        $this->method = $method;
+    protected $rules = [
+        'name'=>'required|string',
+        'startedAt'=>'required',
+        'endedAt'=>'required',
+    ];
+
+    public function updated($propertyName){
+        $this->validateOnly($propertyName);
+    }
+
+    public function create(){
+        $this->method = 'save';
+        $this->name = '';
+        $this->startedAt = '';
+        $this->endedAt = '';
     }
 
     public function save(){
-        auth()->user()->activities()->create([
-            'name'=>$this->name
+        $this->validate();
+
+        auth()->user()->lessons()->create([
+            'name' => $this->name,
+            'started_at' => $this->startedAt,
+            'ended_at' => $this->endedAt,
         ]);
         $this->sendMsg('success', 'The lesson has been successfully added.');
     }
 
+    public function edit($data){
+        $this->method = "update($data[id])";
+        $this->name = $data['name'];
+        $this->startedAt = $data['started_at'];
+        $this->endedAt = $data['ended_at'];
+    }
+
     public function update($id){
+        $this->validate();
+
         $lesson = Lesson::where('id', $id)->first();
         $lesson->update([
-            'name'=>$this->name
+            'name' => $this->name,
+            'started_at' => $this->startedAt,
+            'ended_at' => $this->endedAt,
         ]);
         $this->sendMsg('success', 'The lesson has been successfully updated.');
     }
@@ -71,8 +91,8 @@ class Activities extends Component
     
     public function render()
     {
-        return view('livewire.activities', [
-            'activities' => Lesson::where('name', 'like', "%$this->search%")->paginate(10)
+        return view('livewire.lessons', [
+            'lessons' => Lesson::where('name', 'like', "%$this->search%")->where('ended_at', '>=', date('Y-m-d H:i:s'))->paginate(10)
         ]);
     }
 }

@@ -20,24 +20,24 @@
             </a>
         </x-li>
 
-        <x-li active="{{ request()->segment(1) == 'wallets' }}">
-            <a href="{{ route('wallets') }}" class="py-3 flex items-center justify-start w-full h-full">
-                <span class="iconly-brokenWallet text-2xl mr-3"></span>
-                <span>E-wallet</span>
-            </a>
-        </x-li>
-
-        <x-li active="{{ request()->segment(1) == 'stats' }}">
-            <a href="{{ route('stats') }}" class="py-3 flex items-center justify-start w-full h-full">
-                <span class="iconly-brokenGraph text-2xl mr-3"></span>
-                <span>Stats</span>
-            </a>
-        </x-li>
-
-        <x-li active="{{ request()->segment(1) == 'activities' }}">
-            <a href="{{ route('activities') }}" class="py-3 flex items-center justify-start w-full h-full">
+        <x-li active="{{ request()->segment(1) == 'lessons' }}">
+            <a href="{{ route('lessons') }}" class="py-3 flex items-center justify-start w-full h-full">
                 <span class="iconly-brokenCalendar text-2xl mr-3"></span>
-                <span>Activity</span>
+                <span>Lessons</span>
+            </a>
+        </x-li>
+
+        <x-li active="{{ request()->segment(1) == 'attendances' }}">
+            <a href="{{ route('attendances') }}" class="py-3 flex items-center justify-start w-full h-full">
+                <span class="iconly-brokenGraph text-2xl mr-3"></span>
+                <span>Attendances</span>
+            </a>
+        </x-li>
+
+        <x-li>
+            <a class="py-3 flex items-center justify-start w-full h-full">
+                <span class="iconly-brokenDocument text-2xl mr-3"></span>
+                <span>Presence</span>
             </a>
         </x-li>
     </ul>

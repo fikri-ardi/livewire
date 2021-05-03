@@ -42,11 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function activities(){
-        return $this->hasMany(Activity::class);
+    public function lessons(){
+        return $this->hasMany(Lesson::class);
     }
 
-    public function isCreator(User $user, Activity $activity){
+    public function isCreator(User $user, Lesson $activity){
         return ($user->id === $activity->user_id) ? true : false;
     }
 }
