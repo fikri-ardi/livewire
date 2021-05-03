@@ -76,7 +76,8 @@ class Lessons extends Component
         $this->sendMsg('success', 'The lesson has been successfully updated.');
     }
 
-    public function delete(Request $request, Lesson $lesson){
+    public function delete(Request $request, Lesson $lesson)
+    {
         /**
          * Authorize user with lessonPolicy
         */
@@ -88,7 +89,7 @@ class Lessons extends Component
 
         $this->sendMsg('success', 'The lesson has been successfully deleted.');
     }
-    
+
     public function render()
     {
         return view('livewire.lessons', [
