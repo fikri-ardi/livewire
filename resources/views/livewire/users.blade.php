@@ -12,10 +12,7 @@
     </div>
 
     {{-- Search Box --}}
-    <x-form-group class="w-1/2 my-2 rounded-full text-gray-200 focus:border-opacity-0 focus:ring-gray-800">
-        <span wire:loading.class="opacity-20 animate-spin" class="iconly-brokenSearch mr-3"></span>
-        <x-input type="search" field="search" model="search" placeholder="Search user by email ..." />
-    </x-form-group>
+    <x-search placeholder="Search user by email ..." />
 
     {{-- Users List --}}
     <ol>

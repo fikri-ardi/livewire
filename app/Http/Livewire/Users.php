@@ -4,13 +4,13 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Http\Traits\Search;
 use Livewire\WithPagination;
 
 class Users extends Component
 {
-    use WithPagination;
+    use WithPagination,Search;
     
-    public $search;
     public $profilePhotoUrl;
     
     /** The code below will match between the query string and the $search property.
@@ -18,12 +18,9 @@ class Users extends Component
      * value with the public property $search
      */
     protected $queryString = [
-        'search'=>['except'=>'']
+        'search'=>['except'=>''],
+        'page'=>['except'=>1]
     ];
-
-    public function updatingSearch(){
-        $this->resetPage();
-    }
 
     public function render()
     {

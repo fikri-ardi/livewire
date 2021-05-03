@@ -3,32 +3,28 @@
 namespace App\Http\Livewire;
 
 use Session;
-use Livewire\Component;
 use App\Models\Lesson;
+use Livewire\Component;
+use App\Http\Traits\{Search, FlashMessage};
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
-use App\Http\Traits\FlashMessage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Lessons extends Component
 {
-    use AuthorizesRequests,WithPagination,FlashMessage;
+    use AuthorizesRequests,WithPagination,FlashMessage,Search;
     
-    public $name,$startedAt,$endedAt,$method,$search;
+    public $name,$startedAt,$endedAt,$method;
 
     public function mount(){
         $this->method = 'save';
     }
 
-    public function updatingSearch(){
-        $this->resetPage();
-    }
-
-    protected $queryString = [
+    public $queryString = [
         'search'=>['except'=>''],
         'page'=>['except'=>1]
     ];
-
+    
     protected $rules = [
         'name'=>'required|string',
         'startedAt'=>'required',
