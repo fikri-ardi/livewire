@@ -53,17 +53,16 @@ class Lessons extends Component
         $this->sendMsg('success', 'The lesson has been successfully added.');
     }
 
-    public function edit($data){
-        $this->method = "update($data[id])";
-        $this->name = $data['name'];
-        $this->startedAt = $data['started_at'];
-        $this->endedAt = $data['ended_at'];
+    public function edit(Lesson $lesson){
+        $this->method = "update($lesson)";
+        $this->name = $lesson['name'];
+        $this->startedAt = $lesson['started_at'];
+        $this->endedAt = $lesson['ended_at'];
     }
 
-    public function update($id){
+    public function update(Lesson $lesson){
         $this->validate();
 
-        $lesson = Lesson::where('id', $id)->first();
         $lesson->update([
             'name' => $this->name,
             'started_at' => $this->startedAt,

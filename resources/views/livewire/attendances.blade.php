@@ -34,11 +34,12 @@
                     <td>{{ $attendance->ended_at }}</td>
 
                     <td class="flex items-center">
-                        <x-button class="mx-1 h-10 w-10 flex items-center justify-center">
+                        <x-button wire:click="edit({{ $attendance }})" x-on:click="{ open(), btnText = 'update' }"
+                            class="mx-1 h-10 w-10 flex items-center justify-center">
                             <span class="iconly-brokenEdit-Square text-lg"></span>
                         </x-button>
 
-                        <button
+                        <button wire:click="destroy({{ $attendance }})"
                             class="mx-1 border border-red-500 h-10 text-red-500 w-10 rounded-full hover:bg-red-500 hover:text-red-100 focus:bg-red-500 focus:text-red-100">
                             <span class="iconly-brokenDelete text-lg"></span>
                         </button>
@@ -54,19 +55,16 @@
             </tbody>
         </table>
 
-        <h1>{{ "$subject,$lessonId,$startedAt,$endedAt,$method" }}</h1>
-
         <div x-show="isOpen()" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-30 z-30">
-            <form wire:submit.prevent="{{ $method }}" x-on:click.away="{ close(), reset() }" x-on:submit="{ close(), reset() }"
-                x-show.transition="isOpen()" class="absolute top-72 left-1/2 overflow-hidden">
+            <form wire:submit.prevent="{{ $method }}" x-on:click.away="{ close() }" x-on:submit="{ close() }" x-show.transition="isOpen()"
+                class="absolute top-72 left-1/2 overflow-hidden">
                 <x-form-group class="text-gray-200 rounded-tl-md rounded-tr-md flex-col">
-                    <x-input field="subject" model="subject" x-model="subject" placeholder="Attendances subject" autofocus />
+                    <x-input field="subject" model="subject" placeholder="Attendances subject" autofocus />
                 </x-form-group>
                 <x-invalid-form-message field="subject" model="{{ $subject }}" class="bg-gray-800 rounded-md px-2" />
 
                 <x-form-group class="text-gray-200">
-                    <select name="lessonId" wire:model="lessonId" x-model="lessonId"
-                        class="bg-gray-800 text-white cursor-pointer w-full appearance-none outline-none">
+                    <select name="lessonId" wire:model="lessonId" class="bg-gray-800 text-white cursor-pointer w-full appearance-none outline-none">
                         <option value="" selected>Choose lesson</option>
                         @forelse ($lessons as $lesson)
                         <option value="{{ $lesson->id }}">{{ $lesson->name }}</option>
@@ -79,12 +77,12 @@
                 <x-invalid-form-message field="lessonId" model="{{ $lessonId }}" class="bg-gray-800 rounded-md px-2" />
 
                 <x-form-group class="text-gray-200">
-                    <x-input field="startedAt" model="startedAt" x-model="startedAt" placeholder="Started at" autofocus />
+                    <x-input field="startedAt" model="startedAt" placeholder="Started at" autofocus />
                 </x-form-group>
                 <x-invalid-form-message field="startedAt" model="{{ $startedAt }}" class="bg-gray-800 rounded-md px-2" />
 
                 <x-form-group class="text-gray-200 rounded-bl-md rounded-br-md">
-                    <x-input field="endedAt" model="endedAt" x-model="endedAt" placeholder="Ended at" autofocus />
+                    <x-input field="endedAt" model="endedAt" placeholder="Ended at" autofocus />
                 </x-form-group>
                 <x-invalid-form-message field="endedAt" model="{{ $endedAt }}" class="bg-gray-800 rounded-md px-2" />
 
@@ -105,30 +103,13 @@
 <script>
     function getData(){
         return {
-            display:true,
-            subject: '',
-            lessonId: null,
-            startedAt:'',
-            endedAt:'',
+            display:false,
             btnText:'add',
             
             open() { this.display = true },
             close() { this.display = false },
 
-            reset() {
-                this.subject = '';
-                this.lessonId = null;
-                this.startedAt = '';
-                this.endedAt = '';
-            },
-
             isOpen() { return this.display === true },
-            fillFormWith(data) {
-                this.subject = data.subject;
-                this.lessonId = data.lesson_id;
-                this.startedAt = data.started_at;
-                this.endedAt = data.ended_at;
-            },
         }
     }
 </script>

@@ -35,7 +35,7 @@
 
                     <td class="flex items-center">
                         @can(['update','delete'], $lesson)
-                        <x-button wire:click="edit({{ $lesson }})" x-on:click="{open(), fillFormWith({{ $lesson }}), btnText = 'update'}"
+                        <x-button wire:click="edit({{ $lesson }})" x-on:click="{open(), btnText = 'update'}"
                             class="mx-1 h-10 w-10 flex items-center justify-center">
 
                             <span class="iconly-brokenEdit-Square text-lg"></span>
@@ -67,20 +67,20 @@
 
         {{-- Add New Lesson --}}
         <div x-show="isOpen()" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-30 z-30">
-            <form wire:submit.prevent="{{ $method }}" x-on:click.away="{ close(), reset() }" x-on:submit="{ close(), reset() }"
-                x-show.transition="isOpen()" class="absolute top-72 left-1/2 overflow-hidden">
+            <form wire:submit.prevent="{{ $method }}" x-on:click.away="{ close() }" x-on:submit="{ close() }" x-show.transition="isOpen()"
+                class="absolute top-72 left-1/2 overflow-hidden">
                 <x-form-group class="text-gray-200 rounded-tl-md rounded-tr-md flex-col">
-                    <x-input field="name" model="name" x-model="name" placeholder="Lesson name" autofocus />
+                    <x-input field="name" model="name" placeholder="Lesson name" autofocus />
                 </x-form-group>
                 <x-invalid-form-message field="name" model="{{ $name }}" class="bg-gray-800 rounded-md px-2" />
 
                 <x-form-group class="text-gray-200">
-                    <x-input field="startedAt" model="startedAt" x-model="startedAt" placeholder="Started at" autofocus />
+                    <x-input field="startedAt" model="startedAt" placeholder="Started at" autofocus />
                 </x-form-group>
                 <x-invalid-form-message field="startedAt" model="{{ $startedAt }}" class="bg-gray-800 rounded-md px-2" />
 
                 <x-form-group class="text-gray-200 rounded-bl-md rounded-br-md">
-                    <x-input field="endedAt" model="endedAt" x-model="endedAt" placeholder="Ended at" autofocus />
+                    <x-input field="endedAt" model="endedAt" placeholder="Ended at" autofocus />
                 </x-form-group>
                 <x-invalid-form-message field="endedAt" model="{{ $endedAt }}" class="bg-gray-800 rounded-md px-2" />
 
@@ -102,24 +102,12 @@
     function getData(){
         return {
             display:false,
-            name: '',
-            startedAt:'',
-            endedAt:'',
             btnText:'add',
 
             open() { this.display = true },
             close() { this.display = false },
-            reset() {
-                this.name = '';
-                this.startedAt = '';
-                this.endedAt = '';
-            },
+
             isOpen() { return this.display === true },
-            fillFormWith(data) {
-                this.name = data.name;
-                this.startedAt = data.started_at;
-                this.endedAt = data.ended_at;
-             },
         }
     }
 </script>

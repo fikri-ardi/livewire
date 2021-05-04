@@ -23,8 +23,8 @@ class Attendances extends Component
     protected $rules = [
         'subject'=>'required|string',
         'lessonId'=>'required|integer',
-        'startedAt'=>'required|date',
-        'endedAt'=>'required|date',
+        'startedAt'=>'required',
+        'endedAt'=>'required',
     ];
 
     public function updated($propertyName){
@@ -53,6 +53,31 @@ class Attendances extends Component
             'ended_at' => $this->endedAt,
         ]);
         $this->sendMsg('success', 'The lesson has been successfully added.');
+    }
+
+    public function edit(Attendance $attendance){
+        $this->method = "update($attendance)";
+        $this->subject = $attendance['subject'];
+        $this->lessonId = $attendance['lesson_id'];
+        $this->startedAt = $attendance['started_at'];
+        $this->endedAt = $attendance['ended_at'];
+    }
+
+    public function update(Attendance $attendance){
+        $this->validate();
+
+        $attendance->update([
+            'subject' => $this->subject,
+            'lesson_id' => $this->lessonId,
+            'started_at' => $this->startedAt,
+            'ended_at' => $this->endedAt,
+        ]);
+        $this->sendMsg('success', 'The attendance has been successfully updated.');
+    }
+
+    public function destroy(Attendance $attendance){
+        Attendance::destroy($attendance->id);
+        $this->sendMsg('success', 'The attendance has been successfully deleted.');
     }
 
     public function render()
