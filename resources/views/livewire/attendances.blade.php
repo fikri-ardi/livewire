@@ -10,10 +10,10 @@
         <x-header icon="iconly-brokenGraph" subject="Attendances" />
 
         {{-- Search --}}
-        <x-search placeholder="Search attendances by subject ..." />
+        <x-search placeholder="Search attendances by subject ..." class="my-6" />
 
         {{-- Table --}}
-        <table class="my-5 table-auto rounded-md overflow-hidden" cellpadding="10">
+        <table class="my-5 text-left table-auto rounded-md overflow-hidden" cellpadding="10">
             <thead class="bg-gray-800 text-gray-200">
                 <tr>
                     <th class="font-thin">No.</th>

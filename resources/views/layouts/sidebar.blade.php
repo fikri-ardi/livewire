@@ -34,8 +34,8 @@
             </a>
         </x-li>
 
-        <x-li>
-            <a class="py-3 flex items-center justify-start w-full h-full">
+        <x-li active="{{ request()->segment(1) == 'presences' }}">
+            <a href=" {{ route('presences') }}" class="py-3 flex items-center justify-start w-full h-full">
                 <span class="iconly-brokenDocument text-2xl mr-3"></span>
                 <span>Presence</span>
             </a>

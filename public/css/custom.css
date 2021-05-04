@@ -9,3 +9,17 @@
     border-radius: 40px;
     position: relative;
 }
+
+.animate-width{
+    animation: animate-width 0.5s ease-out 1;
+    transform-origin: left;
+}
+
+@keyframes animate-width {
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+}

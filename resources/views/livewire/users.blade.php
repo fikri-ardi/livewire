@@ -9,7 +9,7 @@
     <x-header icon="iconly-brokenUser1" subject="Users" />
 
     {{-- Search Box --}}
-    <x-search placeholder="Search user by email ..." />
+    <x-search placeholder="Search user by email ..." class="my-6" />
 
     {{-- Users List --}}
     <ol>

@@ -10,10 +10,10 @@
         <x-header icon="iconly-brokenCalendar" subject="Lessons" />
 
         {{-- Search Box --}}
-        <x-search placeholder="Search lesson by name ..." />
+        <x-search placeholder="Search lesson by name ..." class="my-6" />
 
         {{-- Table --}}
-        <table class="my-5 table-auto rounded-md overflow-hidden" cellpadding="10">
+        <table class="my-5 text-left table-auto rounded-md overflow-hidden" cellpadding="10">
             <thead class="bg-gray-800 text-gray-200">
                 <tr>
                     <th class="font-thin">No.</th>
